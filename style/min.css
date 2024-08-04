@@ -1,0 +1,92 @@
+body {
+    /*触发条件之一，需要指定body的bg颜色*/
+    background: lightgray;
+}
+
+
+/* 不支持广色域没必要显示 */
+@media (dynamic-range: standard) {
+
+    .hdr-img,
+    .hdr-notice {
+        display: none;
+    }
+
+}
+
+@media (dynamic-range: high) {
+
+    .hdr-img,
+    .hdr-notice {
+        display: block;
+    }
+
+    #wide-gamut-notice {
+        display: none;
+    }
+}
+
+/* .hdr {
+    background: color(display-p3 170% 170% 170%);
+} */
+
+.hdr-img {
+    height: 1.5em;
+    width: 3em;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0.6em;
+}
+
+.c {
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}
+
+.c>span {
+    margin-top: 1em;
+    font-weight: bold;
+}
+
+#end-notice {
+    text-align: center;
+    display: none;
+}
+
+#mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    height: 100vh;
+    width: 100vw;
+    background: color(display-p3 170% 170% 170%);
+    z-index: 10;
+    visibility: hidden;
+
+    /* animation-duration: 3s;
+    animation-name: flash; */
+}
+
+@keyframes flash {
+    0% {
+        visibility: hidden;
+        opacity: 0;
+    }
+
+    2% {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    100% {
+        visibility: hidden;
+        opacity: 0;
+    }
+}
