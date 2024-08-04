@@ -4,7 +4,7 @@ let maskEle = document.getElementById("mask");
 let sound = new Audio("./audio/audio.mp3");
 let fired = false
 
-if (navigator.userAgent.search("Chrome") === -1) {
+if (navigator.userAgent.search("Chrome") === -1 || navigator.userAgent.search("QQBrowser") !== -1) {
     alert("推荐使用Chrome、Edge等浏览器打开");
 }
 

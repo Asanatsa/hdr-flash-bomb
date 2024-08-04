@@ -1,27 +1,37 @@
+html, body {
+    height: 100%;
+    margin: 0 !important;
+}
+
 body {
     /*触发条件之一，需要指定body的bg颜色*/
     background: lightgray;
 }
 
 
-/* 不支持广色域没必要显示 */
-@media (dynamic-range: standard) {
 
-    .hdr-img,
-    .hdr-notice {
+@media (dynamic-range: standard) {
+    :root {
+        --light-white: white;
+    }
+
+    /* 不支持广色域没必要显示 */
+    .hdr-img, .hdr-notice {
         display: none;
     }
 
 }
 
 @media (dynamic-range: high) {
+    :root {
+        --light-white: color(display-p3 200% 200% 200%);
+    }
 
-    .hdr-img,
-    .hdr-notice {
+    .hdr-img, .hdr-notice {
         display: block;
     }
 
-    #wide-gamut-notice {
+    .wide-gamut-notice {
         display: none;
     }
 }
@@ -32,7 +42,7 @@ body {
 
 .hdr-img {
     height: 1.5em;
-    width: 3em;
+    width: auto;
     position: absolute;
     top: 0;
     left: 0;
@@ -46,11 +56,11 @@ body {
     flex-wrap: nowrap;
     justify-content: center;
     align-items: center;
-    height: 90vh;
+    height: 85vh;
 }
 
 .c>span {
-    margin-top: 1em;
+    margin-top: 1.5em;
     font-weight: bold;
 }
 
@@ -66,7 +76,7 @@ body {
 
     height: 100vh;
     width: 100vw;
-    background: color(display-p3 170% 170% 170%);
+    background: var(--light-white);
     z-index: 10;
     visibility: hidden;
 
@@ -83,6 +93,11 @@ body {
     2% {
         visibility: visible;
         opacity: 1;
+    }
+
+    20% {
+        visibility: visible;
+        opacity: 0.999;
     }
 
     100% {
